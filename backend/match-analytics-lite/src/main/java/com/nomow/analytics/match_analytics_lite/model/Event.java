@@ -5,12 +5,8 @@ import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,24 +26,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Event {
-    
-    public enum EventType {
-        GOAL, SHOT, TACKLE
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private int minute;
+    
+    private String type;
 
-    @Enumerated(EnumType.STRING)
-    @JsonProperty("type")
-    private EventType type;
-
- 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "player_id") 
+    @JoinColumn(name = "player_id")
     private Player player;
 
     @JdbcTypeCode(SqlTypes.JSON)

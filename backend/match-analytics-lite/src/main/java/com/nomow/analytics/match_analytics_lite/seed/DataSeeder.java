@@ -53,7 +53,7 @@ public class DataSeeder implements CommandLineRunner {
                 .date(ZonedDateTime.parse(matchNode.get("date").asText()))
                 .build();
         matchRepository.save(match);
-        
+
         Map<Long, Player> playerMap = new HashMap<>();
 
         for (JsonNode playerNode : rootNode.get("players")) {
@@ -74,10 +74,9 @@ public class DataSeeder implements CommandLineRunner {
 
             Event event = Event.builder()
                     .minute(eventNode.get("minute").asInt())
-                    .type(Event.EventType.valueOf(eventNode.get("type").asText()))
+                    .type(eventNode.get("type").asText()) // directly use string
                     .player(player)
                     .meta(objectMapper.convertValue(eventNode.get("meta"), Map.class))
-
                     .build();
 
             events.add(event);

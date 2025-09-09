@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "players")
-@Data               
-@NoArgsConstructor  
-@AllArgsConstructor 
-@Builder   
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

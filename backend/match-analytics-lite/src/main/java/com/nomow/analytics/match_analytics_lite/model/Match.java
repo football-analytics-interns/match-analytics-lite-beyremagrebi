@@ -14,10 +14,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "matches")
-@Data               
-@NoArgsConstructor 
-@AllArgsConstructor 
-@Builder         
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Match {
 
     @Id
